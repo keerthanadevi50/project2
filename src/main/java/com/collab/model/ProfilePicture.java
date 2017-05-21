@@ -12,6 +12,7 @@ public class ProfilePicture {
 private String username;
 	@Lob
 private byte[] image;
+	
 	public String getUsername() {
 		return username;
 	}

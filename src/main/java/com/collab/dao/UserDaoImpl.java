@@ -27,12 +27,18 @@ import com.collab.model.User;
 		}
 @Transactional
 	public User login(User user) {
-			Session session=sessionFactory.openSession();
-			Query query=session.createQuery("from User where username=? and password=?");
-			query.setString(0,user.getUsername());
-			query.setString(1,user.getPassword());
-			User validUser=(User)query.uniqueResult();
-			return validUser;
+			
+			String hql = "from User where username=" + "'" + user.getUsername() + "'   and password = " + "'"+ user.getPassword() +"'";
+			Query query = sessionFactory.getCurrentSession().createQuery(hql);
+			
+			@SuppressWarnings("unchecked")
+			List<User> list = (List<User>) query.list();
+			
+			if (list != null && !list.isEmpty()){
+				return list.get(0);
+			}
+			return null;
+			
 			
 		}
 		@Transactional

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import com.collab.model.BlogPost;
+import com.collab.model.Friend;
 import com.collab.model.Job;
 import com.collab.model.Person;
 import com.collab.model.ProfilePicture;
@@ -37,7 +38,7 @@ public class DBConfig {
 		hibernateProperties.setProperty("hibernate.format_sql", "true");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		lsf.addProperties(hibernateProperties);
-		Class classes[] = new Class[] { User.class,Job.class,BlogPost.class,ProfilePicture.class };
+		Class classes[] = new Class[] { User.class,Job.class,BlogPost.class,ProfilePicture.class,Friend.class };
 		return lsf.addAnnotatedClasses(classes).buildSessionFactory();
 		
 	}

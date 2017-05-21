@@ -39,15 +39,18 @@ public class JobController {
 	@RequestMapping(value = "/saveJob", method = RequestMethod.POST)
 	public ResponseEntity<?> saveJob(@RequestBody Job job,HttpSession session) {
 		User user = (User)session.getAttribute("user");
+		//System.out.println(user.getRole());
 		if (user == null) {
 			Error error = new Error(3, "Unauthorized user");
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 		} else {
 			String role = user.getRole();
-			if (role.equals("Student")) {
+			if (role.equals("ADMIN")) {
 				job.setPostedOn(new Date());
 				job.setActive(true);
 				jobDao.saveJobDetails(job);
+				
+				
 				return new ResponseEntity<Job>(job,HttpStatus.OK);
 			} else {
 				Error error = new Error(4, "Access Denied");

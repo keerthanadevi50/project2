@@ -22,8 +22,7 @@ public class usercontroller {
 	@Autowired
 	private UserDao userDao;
 	
-	@Autowired
-	HttpSession session;
+	
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/User", method = RequestMethod.GET)
@@ -97,8 +96,11 @@ public class usercontroller {
 			return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 		} else {
 			session.setAttribute("user", validUser);
+			
 			validUser.setOnline(true);
 			userDao.saveUser(validUser);
+			System.out.println(validUser.getEmail());
+			System.out.println(validUser.getUsername());
 			return new ResponseEntity<User>(validUser, HttpStatus.OK);
 		}
 	}

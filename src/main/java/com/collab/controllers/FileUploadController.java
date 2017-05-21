@@ -26,17 +26,17 @@ public class FileUploadController {
 public ResponseEntity<?> uploadProfilePic(
 		HttpSession session,@RequestParam CommonsMultipartFile fileUpload){
 		User user=(User)session.getAttribute("user");
-		if(user==null){
+		/*if(user==null){
 			Error error=new Error(3,"Unauthorized user.. Please login");
 			return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
-		}
-		else{
+		}*/
+		//else{
 			ProfilePicture profilePicture=new ProfilePicture();
 			profilePicture.setUsername(user.getUsername());
 			profilePicture.setImage(fileUpload.getBytes());
 			profileUploadDao.save(profilePicture);
 			return new ResponseEntity<User>(user,HttpStatus.OK);
-		}
+		//}
 	
 }
 	@RequestMapping(value="/getimage/{username}", method=RequestMethod.GET)
