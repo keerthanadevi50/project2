@@ -8,21 +8,27 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_batch15")
+@Table(name = "user_batch15")
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-private int id;
-	@Column(unique=true,nullable=false)
-private String username;
-private String password;
-@Column(unique=true,nullable=false)
-private String email;
-//Student, alumini, employee , admin
-private String role;
-private boolean enabled;
-@Column(name="on_line")
-private boolean online;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	
+	@Column(unique = true, nullable = false)
+	private String username;
+	
+	private String password;
+	
+	@Column(unique = true, nullable = false)
+	private String email;
+	
+	// Student, alumini, employee , admin
+	private String role;
+	
+	private boolean enabled;
+	
+	@Column(name = "on_line")
+	private boolean online;
 
 	public int getId() {
 		return id;
@@ -64,7 +70,6 @@ private boolean online;
 		this.role = role;
 	}
 
-	
 	public boolean isOnline() {
 		return online;
 	}
