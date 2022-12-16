@@ -341,7 +341,7 @@ https://mvnrepository.com/artifact/org.springframework/spring-expression
 <dependency>
 <groupId>org.springframework</groupId>
 <artifactId>spring-webmvc</artifactId>
-<version>4.2.5.RELEASE</version>
+<version>5.2.20.RELEASE</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-core -->
 <!-- <dependency>
